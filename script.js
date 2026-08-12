@@ -1,5 +1,7 @@
 // VoiceCloneVIP Script Version 2
 
+alert("VoiceCloneVIP Script OK");
+
 
 import { auth } from "./firebase.js";
 
