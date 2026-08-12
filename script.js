@@ -1,5 +1,26 @@
-// VoiceCloneVIP Script Version 1
+// VoiceCloneVIP Script Version 2
 
+
+import { auth } from "./firebase.js";
+
+
+import {
+
+    GoogleAuthProvider,
+
+    signInWithPopup,
+
+    signOut
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+
+
+
+// Elements
+
+const loginBtn = document.querySelector(".login-btn");
 
 const voiceFile = document.getElementById("voiceFile");
 
@@ -11,30 +32,57 @@ const generateBtn = document.querySelector(".generate-btn");
 
 const statusBox = document.querySelector(".status");
 
-const loginBtn = document.querySelector(".login-btn");
 
 
 
 
-// Voice Upload Preview
 
-voiceFile.addEventListener("change", function(){
-
-
-    const file = this.files[0];
+// ======================
+// Gmail Login
+// ======================
 
 
-    if(file){
+const provider = new GoogleAuthProvider();
 
 
-        const audioURL = URL.createObjectURL(file);
+
+loginBtn.addEventListener("click", async ()=>{
 
 
-        voicePreview.src = audioURL;
+    try{
+
+
+        const result = await signInWithPopup(
+
+            auth,
+
+            provider
+
+        );
+
+
+        const user = result.user;
+
+
+
+        loginBtn.innerHTML =
+        "👤 " + user.email;
+
 
 
         statusBox.innerHTML =
-        "🎧 မူရင်းအသံ တင်ပြီးပါပြီ";
+        "✅ Login အောင်မြင်ပါပြီ";
+
+
+
+    }
+
+
+    catch(error){
+
+
+        statusBox.innerHTML =
+        "❌ Login Error : " + error.message;
 
 
     }
@@ -46,16 +94,73 @@ voiceFile.addEventListener("change", function(){
 
 
 
-// Generate Button
-
-
-generateBtn.addEventListener("click", function(){
 
 
 
-    const file = voiceFile.files[0];
+// ======================
+// Voice Upload Preview
+// ======================
 
-    const text = textInput.value.trim();
+
+voiceFile.addEventListener(
+"change",
+
+function(){
+
+
+    const file = this.files[0];
+
+
+
+    if(file){
+
+
+        const audioURL =
+        URL.createObjectURL(file);
+
+
+
+        voicePreview.src =
+        audioURL;
+
+
+
+        statusBox.innerHTML =
+        "🎧 အသံဖိုင် တင်ပြီးပါပြီ";
+
+
+    }
+
+
+});
+
+
+
+
+
+
+
+
+
+// ======================
+// Generate Voice
+// ======================
+
+
+generateBtn.addEventListener(
+"click",
+
+function(){
+
+
+    const file =
+    voiceFile.files[0];
+
+
+
+    const text =
+    textInput.value.trim();
+
 
 
 
@@ -63,13 +168,14 @@ generateBtn.addEventListener("click", function(){
 
 
         statusBox.innerHTML =
-        "❌ ကျေးဇူးပြု၍ မူရင်းအသံတင်ပါ";
+        "❌ မူရင်းအသံ ဖိုင်တင်ပါ";
 
 
         return;
 
-
     }
+
+
 
 
 
@@ -77,13 +183,14 @@ generateBtn.addEventListener("click", function(){
 
 
         statusBox.innerHTML =
-        "❌ အသံထုတ်မည့် စာသားထည့်ပါ";
+        "❌ စာသားထည့်ပါ";
 
 
         return;
 
 
     }
+
 
 
 
@@ -95,11 +202,13 @@ generateBtn.addEventListener("click", function(){
 
 
 
-    setTimeout(function(){
+
+
+    setTimeout(()=>{
 
 
         statusBox.innerHTML =
-        "✅ အသံဖန်တီးပြီးပါပြီ";
+        "✅ Voice Generate ပြီးပါပြီ";
 
 
     },3000);
@@ -113,15 +222,23 @@ generateBtn.addEventListener("click", function(){
 
 
 
-// Gmail Login Demo
+
+// ======================
+// Check Login State
+// ======================
 
 
-loginBtn.addEventListener("click",function(){
+auth.onAuthStateChanged((user)=>{
 
 
-    alert(
-        "Gmail Login System ကို Firebase နဲ့ ချိတ်ဆက်သွားပါမည်"
-    );
+    if(user){
+
+
+        loginBtn.innerHTML =
+        "👤 " + user.email;
+
+
+    }
 
 
 });
