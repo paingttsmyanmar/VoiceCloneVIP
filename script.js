@@ -1,46 +1,73 @@
-// VoiceCloneVIP Script
+// VoiceCloneVIP Script Version 1
 
-
-const generateBtn = document.querySelector(".generate-btn");
-const loginBtn = document.querySelector(".login-btn");
 
 const voiceFile = document.getElementById("voiceFile");
+
+const voicePreview = document.getElementById("voicePreview");
+
 const textInput = document.getElementById("textInput");
+
+const generateBtn = document.querySelector(".generate-btn");
 
 const statusBox = document.querySelector(".status");
 
+const loginBtn = document.querySelector(".login-btn");
 
 
-// Gmail Login Button
 
-loginBtn.addEventListener("click", function(){
 
-    alert(
-        "Gmail Login System will be connected soon!"
-    );
+// Voice Upload Preview
+
+voiceFile.addEventListener("change", function(){
+
+
+    const file = this.files[0];
+
+
+    if(file){
+
+
+        const audioURL = URL.createObjectURL(file);
+
+
+        voicePreview.src = audioURL;
+
+
+        statusBox.innerHTML =
+        "🎧 မူရင်းအသံ တင်ပြီးပါပြီ";
+
+
+    }
+
 
 });
 
 
 
 
-// Generate Voice Button
+
+// Generate Button
+
 
 generateBtn.addEventListener("click", function(){
 
 
-    let file = voiceFile.files[0];
 
-    let text = textInput.value.trim();
+    const file = voiceFile.files[0];
+
+    const text = textInput.value.trim();
 
 
 
     if(!file){
 
+
         statusBox.innerHTML =
-        "❌ Please upload your voice sample.";
+        "❌ ကျေးဇူးပြု၍ မူရင်းအသံတင်ပါ";
+
 
         return;
+
 
     }
 
@@ -50,26 +77,29 @@ generateBtn.addEventListener("click", function(){
 
 
         statusBox.innerHTML =
-        "❌ Please enter your text.";
+        "❌ အသံထုတ်မည့် စာသားထည့်ပါ";
+
 
         return;
+
 
     }
 
 
 
+
+
     statusBox.innerHTML =
-    "⏳ Processing Voice Clone...";
+    "⏳ AI Voice ဖန်တီးနေပါသည်...";
 
 
 
-    // Demo Processing
 
     setTimeout(function(){
 
 
         statusBox.innerHTML =
-        "✅ Voice Clone Completed!";
+        "✅ အသံဖန်တီးပြီးပါပြီ";
 
 
     },3000);
@@ -81,22 +111,17 @@ generateBtn.addEventListener("click", function(){
 
 
 
-// File Upload Check
-
-voiceFile.addEventListener(
-"change",
-function(){
 
 
-    if(this.files.length > 0){
+// Gmail Login Demo
 
 
-        statusBox.innerHTML =
-        "🎤 Voice File Uploaded: "
-        + this.files[0].name;
+loginBtn.addEventListener("click",function(){
 
 
-    }
+    alert(
+        "Gmail Login System ကို Firebase နဲ့ ချိတ်ဆက်သွားပါမည်"
+    );
 
 
 });
