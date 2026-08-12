@@ -1,122 +1,296 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoiceCloneVIP</title>
+<html lang="my">
 
-    <link rel="stylesheet" href="style.css">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VoiceCloneVIP</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<header>
-    <div class="logo">
-        VoiceCloneVIP
-    </div>
 
-    <button class="login-btn">
-        Gmail Login
-    </button>
+<header>
+
+<div class="logo">
+🎙️ VoiceCloneVIP
+</div>
+
+
+<button class="login-btn">
+Gmail Login
+</button>
+
+
 </header>
+
+
 
 
 <section class="hero">
 
-    <h1>
-        AI Voice Clone Platform
-    </h1>
 
-    <p>
-        Create your own AI voice with advanced voice cloning technology.
-    </p>
+<h1>
+AI အသံကူးယူစနစ်
+</h1>
 
 
-    <div class="card">
-
-        <h2>
-            Upload Voice Sample
-        </h2>
+<p>
+Create your own AI Voice with VoiceCloneVIP
+</p>
 
 
-        <input 
-        type="file" 
-        id="voiceFile"
-        accept="audio/*">
+
+<div class="card">
 
 
-        <h2>
-            Enter Text
-        </h2>
+<h2>
+🎤 မူရင်းအသံတင်ပါ
+</h2>
 
 
-        <textarea 
-        id="textInput"
-        placeholder="Type your text here...">
-        </textarea>
+<input 
+type="file"
+id="voiceFile"
+accept="audio/*">
 
 
-        <button class="generate-btn">
-            Generate Voice
-        </button>
+
+<h3>
+🎧 အသံနားထောင်ရန်
+</h3>
 
 
-        <div class="status">
-            Status: Waiting...
-        </div>
+<audio 
+id="voicePreview"
+controls>
+</audio>
 
 
-    </div>
+
+
+<h2>
+📝 စာသားထည့်ပါ
+</h2>
+
+
+<textarea
+id="textInput"
+placeholder="အသံထုတ်ချင်သော စာသားကို ရေးပါ...">
+</textarea>
+
+
+
+
+<div class="advanced">
+
+
+<h2>
+⚙️ Advanced Settings
+</h2>
+
+
+<label>
+Voice Similarity
+</label>
+
+<input 
+type="range"
+min="0"
+max="100"
+value="80">
+
+
+
+<label>
+Voice Speed
+</label>
+
+<input 
+type="range"
+min="50"
+max="150"
+value="100">
+
+
+
+<label>
+Pitch Control
+</label>
+
+<input 
+type="range"
+min="-10"
+max="10"
+value="0">
+
+
+
+</div>
+
+
+
+
+<button class="generate-btn">
+
+🎙️ အသံဖန်တီးပါ
+
+</button>
+
+
+
+<div class="status">
+
+Status: Waiting...
+
+</div>
+
+
+
+
+<div class="result">
+
+
+<h2>
+🎧 Result Voice
+</h2>
+
+
+<audio 
+id="resultAudio"
+controls>
+</audio>
+
+
+
+<a id="downloadBtn">
+
+<button class="download-btn">
+
+⬇ Download အသံဖိုင်
+
+</button>
+
+</a>
+
+
+</div>
+
+
+
+</div>
 
 
 </section>
+
+
+
+
 
 
 
 <section class="vip">
 
+
 <h2>
-VIP Plans
+⭐ VIP Package
 </h2>
+
 
 
 <div class="plans">
 
-<div class="plan">
-<h3>Free</h3>
-<p>Test Voice Clone</p>
-</div>
 
 
 <div class="plan">
-<h3>VIP</h3>
-<p>Unlimited Voice Access</p>
+
+<h3>
+7 Days VIP
+</h3>
+
+<p>
+7 ရက် အသုံးပြုခွင့်
+</p>
+
 </div>
+
+
+
 
 
 <div class="plan">
-<h3>Premium</h3>
-<p>High Quality AI Voice</p>
+
+<h3>
+15 Days VIP
+</h3>
+
+<p>
+15 ရက် အသုံးပြုခွင့်
+</p>
+
 </div>
 
 
+
+
+
+
+<div class="plan">
+
+<h3>
+30 Days VIP
+</h3>
+
+<p>
+30 ရက် အသုံးပြုခွင့်
+</p>
+
 </div>
+
+
+
+</div>
+
 
 </section>
 
 
 
+
+
+
+
 <footer>
 
+
 <p>
-© 2026 VoiceCloneVIP
+Founder Paing Hein Kyaw
 </p>
+
+
+<p>
+Copyright © 2026 VoiceCloneVIP
+<br>
+All Rights Reserved.
+</p>
+
+
 
 </footer>
 
 
 
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
